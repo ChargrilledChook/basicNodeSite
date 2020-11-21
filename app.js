@@ -2,24 +2,25 @@ const url = require("url");
 const http = require("http");
 const fileSystem = require("fs");
 
+const indexPage = "./index.html";
+const errorPage = "./404.html";
 const PORT = 8080;
 
 http
   .createServer((req, res) => {
     const urlPath = url.parse(req.url, true);
-    let filename = "." + urlPath.pathname;
-    console.log(urlPath.pathname);
-    filename = filename === "./" ? "./index.html" : filename;
+    let filename = "." + urlPath.pathname + ".html";
+
+    if (urlPath.pathname === "/" || urlPath.pathname === "")
+      filename = indexPage;
+
     fileSystem.readFile(filename, (err, data) => {
       if (err) {
-        errorPage = "./404.html";
-        fileSystem.readFile(errorPage, (err, data) => {
-          if (err) {
-            res.writeHead(404, { "Content-Type": "text/html" });
-            return res.end("404 Not Found");
-          }
-          res.writeHead(200, { "Content-Type": "text/html" });
-          res.write(data);
+        return fileSystem.readFile(errorPage, (err2, errorData) => {
+          if (err2) throw err2;
+
+          res.writeHead(404, { "Content-Type": "text/html" });
+          res.write(errorData);
           return res.end();
         });
       }
