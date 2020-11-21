@@ -1,0 +1,29 @@
+{
+  "name": "basic-site",
+  "version": "1.0.0",
+  "description": "Practicing baby basics for Node.",
+  "main": "app.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/ChargrilledChook/basicNodeSite.git"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/ChargrilledChook/basicNodeSite/issues"
+  },
+  "homepage": "https://github.com/ChargrilledChook/basicNodeSite#readme",
+  "dependencies": {
+    "express": "^4.17.1",
+    "mongodb": "^3.6.3",
+    "morgan": "^1.10.0"
+  },
+  "devDependencies": {
+    "eslint": "^7.14.0",
+    "nodemon": "^2.0.6"
+  }
+}
